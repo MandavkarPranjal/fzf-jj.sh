@@ -140,7 +140,7 @@ _fzf_jj_bookmarks() {
     --no-hscroll \
     --bind 'ctrl-/:change-preview-window(down,70%|hidden|)' \
     --bind "ctrl-o:execute-silent:bash \"$__fzf_jj\" --list bookmark {1}" \
-    --preview "jj log --color=$(__fzf_jj_color .) -r {1} --limit 10" "$@" |
+    --preview "jj log --color=$(__fzf_jj_color .) -r ::\$(echo {1} | sed 's/:$//') --limit 10" "$@" |
   awk '{print $1}' | sed 's/:$//' | head -1
 }
 
