@@ -160,14 +160,14 @@ _fzf_jj_remotes() {
 _fzf_jj_history() {
   _fzf_jj_check || return
 
-  jj log -T 'change_id.short() ++ " " ++ description' --color=$(__fzf_jj_color) -r '::' --limit 50 |
+  jj log -T 'change_id.short() ++ " " ++ description.first_line()' --color=$(__fzf_jj_color) -r '::' --limit 50 |
   _fzf_jj_fzf --ansi \
     --border-label '🔀 Changes ' \
     --header 'CTRL-O (open in browser)' \
     --preview-window right,70% \
-    --bind "ctrl-o:execute-silent:bash \"$__fzf_jj\" --list revision {2}" \
-    --preview "jj show --color=$(__fzf_jj_color .) {2} | $(__fzf_jj_pager)" "$@" |
-  awk '{print $2}' | head -1
+    --bind "ctrl-o:execute-silent:bash \"$__fzf_jj\" --list revision \$(echo {} | grep -oE '[a-z]{12}' | head -1)" \
+    --preview "jj show --color=$(__fzf_jj_color .) \$(echo {} | grep -oE '[a-z]{12}' | head -1) | $(__fzf_jj_pager)" "$@" |
+  grep -oE '[a-z]{12}' | head -1
 }
 
 _fzf_jj_list_bindings() {
