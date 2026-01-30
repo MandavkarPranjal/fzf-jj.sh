@@ -170,11 +170,11 @@ _fzf_jj_remotes() {
 _fzf_jj_history() {
   _fzf_jj_check || return
 
-  jj log -T 'change_id.short() ++ " " ++ description.first_line()' --color=$(__fzf_jj_color) -r '::' --limit 50 |
+  jj log -T 'author.timestamp().format("%Y/%m/%d") ++ " " ++ change_id.short() ++ " " ++ description.first_line()' --color=$(__fzf_jj_color) -r '::' --limit 50 |
   _fzf_jj_fzf --ansi \
     --border-label '🔀 Changes ' \
     --header 'CTRL-O (open in browser)' \
-    --preview-window right,70% \
+    --preview-window right,60% \
     --bind "ctrl-o:execute-silent:bash \"$__fzf_jj\" --list revision \$(echo {} | grep -oE '[a-z]{12}' | head -1)" \
     --preview "jj show --color=$(__fzf_jj_color .) \$(echo {} | grep -oE '[a-z]{12}' | head -1) | $(__fzf_jj_pager)" "$@" |
   grep -oE '[a-z]{12}' | head -1
