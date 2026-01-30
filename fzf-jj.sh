@@ -25,7 +25,17 @@ if [[ $1 == --list ]]; then
     case "$1" in
        bookmarks)
          echo 'CTRL-O (open in browser)'
-         jj bookmark list --color=$(__fzf_jj_color) 2>/dev/null || true
+         jj bookmark list -a --color=$(__fzf_jj_color) 2>/dev/null | awk '
+           {
+             plain = $0; gsub(/\x1b\[[0-9;]*m/, "", plain)
+           }
+           plain ~ /^[^[:space:]]/ { bookmark = plain; sub(/:.*/, "", bookmark); print }
+           plain ~ /^[[:space:]]+@/ && plain !~ /^[[:space:]]+@git/ {
+             match(plain, /@[^:[:space:]]+/)
+             remote = substr(plain, RSTART+1, RLENGTH-1)
+             print bookmark "@" remote substr($0, index($0, ":"))
+           }
+         ' || true
          ;;
        remotes)
         echo 'CTRL-O (open in browser)'
@@ -140,8 +150,8 @@ _fzf_jj_bookmarks() {
     --no-hscroll \
     --bind 'ctrl-/:change-preview-window(down,70%|hidden|)' \
     --bind "ctrl-o:execute-silent:bash \"$__fzf_jj\" --list bookmark {1}" \
-    --preview "jj log --color=$(__fzf_jj_color .) -r ::\$(echo {1} | sed 's/:$//') --limit 10" "$@" |
-  awk '{print $1}' | sed 's/:$//' | head -1
+    --preview "jj log --color=$(__fzf_jj_color .) -r ::\$(echo {1} | sed 's/\[[0-9;]*m//g; s/:$//') --limit 10" "$@" |
+  grep -oE '^[^:]+' | head -1
 }
 
 _fzf_jj_remotes() {
