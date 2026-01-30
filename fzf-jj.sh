@@ -157,11 +157,25 @@ _fzf_jj_remotes() {
   awk '{print $1}' | head -1
 }
 
+_fzf_jj_history() {
+  _fzf_jj_check || return
+
+  jj log -T 'change_id.short() ++ " " ++ description' --color=$(__fzf_jj_color) -r '::' --limit 50 |
+  _fzf_jj_fzf --ansi \
+    --border-label '🔀 Changes ' \
+    --header 'CTRL-O (open in browser)' \
+    --preview-window right,70% \
+    --bind "ctrl-o:execute-silent:bash \"$__fzf_jj\" --list revision {2}" \
+    --preview "jj show --color=$(__fzf_jj_color .) {2} | $(__fzf_jj_pager)" "$@" |
+  awk '{print $2}' | head -1
+}
+
 _fzf_jj_list_bindings() {
   cat <<'EOF'
 
 CTRL-J ? to show this list
 CTRL-J CTRL-B for Bookmarks
+CTRL-J CTRL-H for History (changes)
 CTRL-J CTRL-R for Remotes
 EOF
 }
@@ -222,6 +236,6 @@ elif [[ -n "${ZSH_VERSION:-}" ]]; then
     done
   }
 fi
-__fzf_jj_init bookmarks remotes '?list_bindings'
+__fzf_jj_init bookmarks history remotes '?list_bindings'
 
 fi # --------------------------------------------------------------------------
