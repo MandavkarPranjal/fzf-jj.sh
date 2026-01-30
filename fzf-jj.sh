@@ -175,7 +175,7 @@ _fzf_jj_history() {
     --border-label '🔀 Changes ' \
     --header 'CTRL-O (open in browser)' \
     --preview-window right,60% \
-    --bind "ctrl-o:execute-silent:bash \"$__fzf_jj\" --list revision \$(echo {} | grep -oE '[a-z]{12}' | head -1)" \
+    --bind "ctrl-o:execute-silent:bash \"$__fzf_jj\" --list revision \$(jj log --no-graph -r \$(echo {} | grep -oE '[a-z]{12}' | head -1) -T 'commit_id.short(6)')" \
     --preview "jj show --color=$(__fzf_jj_color .) \$(echo {} | grep -oE '[a-z]{12}' | head -1) | $(__fzf_jj_pager)" "$@" |
   grep -oE '[a-z]{12}' | head -1
 }
