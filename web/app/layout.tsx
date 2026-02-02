@@ -13,8 +13,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="antialiased">
-        <div className="min-h-screen bg-zinc-950">
+      <body className="antialiased w-full">
+        <div className="min-h-screen bg-zinc-950 w-full">
           <div className="border-b border-zinc-800">
             <div className="max-w-4xl mx-auto px-6 py-4 flex items-center justify-between">
               <div className="flex items-center gap-4">
