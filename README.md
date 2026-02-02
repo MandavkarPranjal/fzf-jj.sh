@@ -53,7 +53,7 @@ After sourcing the script, use `CTRL-J` prefix for all commands:
 
 | Binding | Action |
 |---------|--------|
-| <kbd>CTRL-J</kbd> | Show this list of bindings |
+| <kbd>CTRL-J</kbd><kbd>?</kbd> | Show this list of bindings |
 | <kbd>CTRL-J</kbd><kbd>CTRL-B</kbd> | Open bookmarks picker |
 | <kbd>CTRL-J</kbd><kbd>CTRL-R</kbd> | Open remotes picker |
 | <kbd>CTRL-J</kbd><kbd>CTRL-H</kbd> | Open Change/Revision picker |
