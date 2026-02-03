@@ -23,12 +23,12 @@ bash and zsh key bindings for [jj], powered by [fzf]
 
    **Bash** (~/.bashrc):
    ```bash
-   source ~/.local/bin/fzf-jj.sh
+   echo "source ~/.local/bin/fzf-jj.sh" >> ~/.bashrc
    ```
 
    **Zsh** (~/.zshrc):
    ```bash
-   source ~/.local/bin/fzf-jj.sh
+   echo "source ~/.local/bin/fzf-jj.sh" >> ~/.zshrc
    ```
 
 OR

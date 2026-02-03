@@ -44,11 +44,11 @@ chmod +x ~/.local/bin/fzf-jj.sh`}
                     <div className="space-y-4">
                         <div>
                             <div className="text-zinc-400 font-mono text-sm mb-2">Bash (~/.bashrc):</div>
-                            <CodeBlock language="bash">source ~/.local/bin/fzf-jj.sh</CodeBlock>
+                            <CodeBlock language="bash">{'echo "source ~/.local/bin/fzf-jj.sh" >> ~/.bashrc'}</CodeBlock>
                         </div>
                         <div>
                             <div className="text-zinc-400 font-mono text-sm mb-2">Zsh (~/.zshrc):</div>
-                            <CodeBlock language="bash">source ~/.local/bin/fzf-jj.sh</CodeBlock>
+                            <CodeBlock language="bash">{'echo "source ~/.local/bin/fzf-jj.sh" >> ~/.zshrc'}</CodeBlock>
                         </div>
                     </div>
                 </div>
