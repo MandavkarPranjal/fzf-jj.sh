@@ -41,6 +41,9 @@ if [[ $1 == --list ]]; then
         echo 'CTRL-O (open in browser)'
         jj git remote list 2>/dev/null || true
         ;;
+       workspaces)
+         jj workspace list 2>/dev/null || true
+         ;;
       *) exit 1 ;;
     esac
   elif [[ $# -gt 1 ]]; then
@@ -180,6 +183,17 @@ _fzf_jj_history() {
   grep -oE '[a-z]{12}' | head -1
 }
 
+_fzf_jj_workspaces() {
+  _fzf_jj_check || return
+
+  jj workspace list |
+    _fzf_jj_fzf --ansi \
+      --border-label '🏢 Workspaces ' \
+      --preview-window right,60% \
+      --preview "jj log --color=$(__fzf_jj_color .) -r \$(echo {1} | cut -d: -f1)@ --limit 5" "$@" |
+    awk -F: '{print $1}'
+}
+
 _fzf_jj_list_bindings() {
   cat <<'EOF'
 
@@ -187,6 +201,7 @@ CTRL-J ? to show this list
 CTRL-J CTRL-B for Bookmarks
 CTRL-J CTRL-H for History (changes)
 CTRL-J CTRL-R for Remotes
+CTRL-J CTRL-W for Workspaces
 EOF
 }
 
@@ -246,6 +261,6 @@ elif [[ -n "${ZSH_VERSION:-}" ]]; then
     done
   }
 fi
-__fzf_jj_init bookmarks history remotes '?list_bindings'
+__fzf_jj_init bookmarks history remotes workspaces '?list_bindings'
 
 fi # --------------------------------------------------------------------------
