@@ -57,6 +57,7 @@ After sourcing the script, use `CTRL-J` prefix for all commands:
 | <kbd>CTRL-J</kbd><kbd>CTRL-B</kbd> | Open bookmarks picker |
 | <kbd>CTRL-J</kbd><kbd>CTRL-R</kbd> | Open remotes picker |
 | <kbd>CTRL-J</kbd><kbd>CTRL-H</kbd> | Open Change/Revision picker |
+| <kbd>CTRL-J</kbd><kbd>CTRL-W</kbd> | Open Workspace picker |
 
 > [!WARNING]
 > The preview of Change/Revision picker is broken for Change ID of same initials

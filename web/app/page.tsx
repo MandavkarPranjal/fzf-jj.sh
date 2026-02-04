@@ -96,7 +96,7 @@ chmod +x ~/.local/bin/fzf-jj.sh`}
                 <h2 className="text-2xl font-semibold text-zinc-200 border-l-4 border-cyan-500 pl-4 font-mono">
                     FEATURES
                 </h2>
-                <div className="grid md:grid-cols-3 gap-6">
+                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
                     <div className="bg-zinc-900 border border-zinc-800 p-6 hover:border-zinc-700 transition-colors">
                         <div className="text-3xl mb-4">📚</div>
                         <h3 className="text-lg font-semibold text-zinc-200 mb-2 font-mono">
@@ -113,6 +113,15 @@ chmod +x ~/.local/bin/fzf-jj.sh`}
                         </h3>
                         <p className="text-zinc-500 text-sm">
                             Manage git remotes integration with ease
+                        </p>
+                    </div>
+                    <div className="bg-zinc-900 border border-zinc-800 p-6 hover:border-zinc-700 transition-colors">
+                        <div className="text-3xl mb-4">🏢</div>
+                        <h3 className="text-lg font-semibold text-zinc-200 mb-2 font-mono">
+                            Workspaces
+                        </h3>
+                        <p className="text-zinc-500 text-sm">
+                            Switch between jj workspaces seamlessly
                         </p>
                     </div>
                     <div className="bg-zinc-900 border border-zinc-800 p-6 hover:border-zinc-700 transition-colors">
@@ -167,12 +176,19 @@ chmod +x ~/.local/bin/fzf-jj.sh`}
                                 </td>
                                 <td className="p-4 text-zinc-400">Open remotes picker</td>
                             </tr>
-                            <tr className="hover:bg-zinc-800/50">
+                            <tr className="border-b border-zinc-800/50 hover:bg-zinc-800/50">
                                 <td className="p-4">
                                     <kbd className="px-2 py-1 bg-zinc-950 border border-zinc-700 text-zinc-300 text-xs font-mono">CTRL-J</kbd>
                                     <kbd className="px-2 py-1 bg-zinc-950 border border-zinc-700 text-zinc-300 text-xs font-mono ml-1">CTRL-H</kbd>
                                 </td>
                                 <td className="p-4 text-zinc-400">Open Change/Revision picker</td>
+                            </tr>
+                            <tr className="hover:bg-zinc-800/50">
+                                <td className="p-4">
+                                    <kbd className="px-2 py-1 bg-zinc-950 border border-zinc-700 text-zinc-300 text-xs font-mono">CTRL-J</kbd>
+                                    <kbd className="px-2 py-1 bg-zinc-950 border border-zinc-700 text-zinc-300 text-xs font-mono ml-1">CTRL-W</kbd>
+                                </td>
+                                <td className="p-4 text-zinc-400">Open Workspace picker</td>
                             </tr>
                         </tbody>
                     </table>

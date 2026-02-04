@@ -94,6 +94,8 @@ export async function GenerateImage() {
                             display: "flex",
                             gap: "24px",
                             marginTop: "32px",
+                            flexWrap: "wrap",
+                            justifyContent: "center",
                         }}
                     >
                         <div
@@ -128,6 +130,17 @@ export async function GenerateImage() {
                             }}
                         >
                             Remotes
+                        </div>
+                        <div
+                            style={{
+                                padding: "12px 24px",
+                                background: "#1e1e2e",
+                                border: "1px solid #313244",
+                                color: "#fab387",
+                                fontSize: "16px",
+                            }}
+                        >
+                            Workspaces
                         </div>
                     </div>
                     <div
